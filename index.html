@@ -3,121 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Empresa - Cabelos e Perfumes</title>
+  <title>Nossa Loja</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-yu..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-    body { line-height: 1.6; background-color: #f4f4f9; color: #333; }
+    body { font-family: 'Roboto', sans-serif; margin:0; line-height:1.6; color:#333; }
+    * { box-sizing: border-box; }
+    a { text-decoration: none; color: inherit; }
 
-    /* Header / Banner */
-    header {
-      background: url('https://source.unsplash.com/1600x600/?beauty,hair,perfume') no-repeat center center/cover;
-      height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-align: center;
-    }
-    header h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
-    header p { font-size: 1.5rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
-    .btn-primary {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 15px;
-      background-color: #ff6b6b;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-    .btn-primary:hover { background-color: #ff3b3b; }
+    nav { background-color: #ff6f61; padding: 10px 0; text-align: center; position: sticky; top:0; z-index:10; }
+    nav a { color:#fff; margin:0 15px; font-weight:bold; transition:0.3s; }
+    nav a:hover { color:#000; }
 
-    /* Seções */
-    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
-    section h2 { font-size: 2rem; margin-bottom: 20px; color: #ff6b6b; text-align: center; }
-    section p { max-width: 800px; margin: 0 auto 20px auto; text-align: center; }
+    header { background: url('https://source.unsplash.com/1600x600/?beauty,perfume') no-repeat center/cover; height: 80vh; display:flex; justify-content:center; align-items:center; color:#fff; text-align:center; position:relative; }
+    header::after { content: ''; position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); }
+    header .content { position:relative; z-index:1; }
+    header h1 { font-size:3rem; margin-bottom:15px; }
+    header p { font-size:1.2rem; }
 
-    /* Produtos */
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .product { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align: center; }
-    .product img { max-width: 100%; border-radius: 8px; margin-bottom: 15px; }
-    .product h3 { margin-bottom: 10px; color: #333; }
-    .product p { color: #666; font-size: 0.9rem; }
+    section { padding:60px 20px; max-width:1200px; margin:0 auto; }
+    section h2 { text-align:center; margin-bottom:40px; font-size:2.5rem; color:#ff6f61; }
 
-    /* Contato */
-    .contact a { display: inline-block; margin: 10px; padding: 10px 20px; background-color: #25d366; color: #fff; border-radius: 5px; text-decoration: none; transition: 0.3s; }
-    .contact a:hover { background-color: #1ebe57; }
+    #sobre p { max-width:800px; margin:0 auto; text-align:center; }
 
-    /* Footer */
-    footer { text-align: center; padding: 20px; background: #333; color: #fff; }
+    .produtos-container { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
+    .produto-card { border:1px solid #ddd; border-radius:10px; overflow:hidden; transition:0.3s; }
+    .produto-card:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .produto-card img { width:100%; display:block; }
+    .produto-card h3 { text-align:center; margin:15px 0; color:#ff6f61; }
+    .produto-card p { padding:0 15px 15px 15px; text-align:center; }
+
+    #contato form { max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px; }
+    #contato input, #contato textarea { padding:10px; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
+    #contato button { padding:15px; background-color:#ff6f61; color:#fff; border:none; border-radius:5px; cursor:pointer; font-size:1.1rem; transition:0.3s; }
+    #contato button:hover { background-color:#e65b50; }
+
+    footer { background-color:#333; color:#fff; text-align:center; padding:30px 20px; }
+    footer a { color:#ff6f61; margin:0 10px; font-size:1.5rem; transition:0.3s; }
+    footer a:hover { color:#fff; }
   </style>
 </head>
 <body>
 
-  <!-- Header / Banner -->
+  <!-- Menu -->
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <!-- Banner -->
   <header>
-    <div>
+    <div class="content">
       <h1>Bem-vindo à Nossa Loja</h1>
       <p>Cabelos e Perfumes de Qualidade para Você</p>
-      <a href="#produtos" class="btn-primary">Confira Nossos Produtos</a>
     </div>
   </header>
 
-  <!-- Sobre a empresa -->
+  <!-- Sobre -->
   <section id="sobre">
     <h2>Sobre Nós</h2>
-    <p>Somos especializados na venda de produtos de beleza, oferecendo **cabelos e perfumes** de alta qualidade. Nosso objetivo é trazer confiança, beleza e sofisticação para nossos clientes.</p>
+    <p>Somos especializados na venda de produtos de beleza, oferecendo <strong>cabelos e perfumes</strong> de alta qualidade. Nosso objetivo é trazer confiança, beleza e sofisticação para nossos clientes.</p>
   </section>
 
   <!-- Produtos -->
   <section id="produtos">
     <h2>Nossos Produtos</h2>
-    <div class="products">
-
-      <!-- Cabelos -->
-      <div class="product">
-        <img src="https://source.unsplash.com/400x300/?hair" alt="Shampoo Premium">
+    <div class="produtos-container">
+      <div class="produto-card">
+        <img src="https://source.unsplash.com/400x300/?shampoo" alt="Shampoo Premium">
         <h3>Shampoo Premium</h3>
         <p>Shampoo nutritivo que deixa o cabelo macio e brilhante.</p>
       </div>
-
-      <div class="product">
-        <img src="https://source.unsplash.com/400x300/?hair,oil" alt="Óleo Capilar">
+      <div class="produto-card">
+        <img src="https://source.unsplash.com/400x300/?oil,hair" alt="Óleo Capilar">
         <h3>Óleo Capilar</h3>
         <p>Óleo para hidratação profunda e proteção dos fios.</p>
       </div>
-
-      <!-- Perfumes -->
-      <div class="product">
-        <img src="https://source.unsplash.com/400x300/?perfume" alt="Perfume Floral">
+      <div class="produto-card">
+        <img src="https://source.unsplash.com/400x300/?perfume,floral" alt="Perfume Floral">
         <h3>Perfume Floral</h3>
         <p>Fragrância leve e elegante para qualquer ocasião.</p>
       </div>
-
-      <div class="product">
-        <img src="https://source.unsplash.com/400x300/?fragrance" alt="Perfume Amadeirado">
+      <div class="produto-card">
+        <img src="https://source.unsplash.com/400x300/?perfume,woody" alt="Perfume Amadeirado">
         <h3>Perfume Amadeirado</h3>
         <p>Perfume marcante com notas sofisticadas de madeira.</p>
       </div>
-
     </div>
   </section>
 
   <!-- Contato -->
   <section id="contato">
     <h2>Fale Conosco</h2>
-    <p>Entre em contato via WhatsApp ou siga nosso Instagram para novidades e promoções:</p>
-    <div class="contact">
-      <a href="https://wa.me/258869517955" target="_blank">WhatsApp</a>
-      <a href="https://instagram.com/matilderachid" target="_blank">Instagram</a>
-    </div>
+    <form action="https://api.whatsapp.com/send?phone=258869517955&text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es." method="get" target="_blank">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu email" required>
+      <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar via WhatsApp</button>
+    </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2026 Minha Empresa. Todos os direitos reservados.
+    <p>Entre em contato via WhatsApp ou siga nosso Instagram para novidades e promoções:</p>
+    <a href="https://wa.me/258869517955" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/matilderachid" target="_blank"><i class="fab fa-instagram"></i></a>
+    <p>&copy; 2026 Nossa Loja. Todos os direitos reservados.</p>
   </footer>
 
 </body>
